@@ -1,71 +1,87 @@
-# Data-science-and-Machine-Learning-Capstone-Projects
-# Building Insurance Claim Prediction by Joy Ifesinachi Samson
+# Building Insurance Claim Prediction
 
-## 📖 Project Overview
-This project aims to build a predictive machine learning model that determines whether a building will have at least one insurance claim during an insured period.
+## 📌 Project Overview
+This project aims to build a predictive model that estimates the probability of a building having at least one insurance claim during its insured period. The prediction is based on building characteristics.
 
-The model predicts the **probability of a claim** based on building characteristics such as structural and categorical features.
-
----
-
-## 🎯 Problem Statement
-Given building-related data, predict:
-- **1** → Building has at least one insurance claim  
-- **0** → Building has no insurance claim  
-
-This is a **binary classification problem** with an imbalanced target variable.
+The task is framed as a binary classification problem:
+- **1**: Building has at least one claim
+- **0**: Building has no claim
 
 ---
 
 ## 📊 Dataset Description
-- Target variable: **Claim**
-- Numerical features: Building-related measurements
-- Categorical features: Building classifications
-- Missing values were handled during preprocessing
+The dataset contains building-level information including numerical and categorical features describing structural, usage, and location attributes.
+
+The target variable **Claim** is imbalanced, with fewer buildings experiencing insurance claims.
+
+---
+
+## 🧹 Data Cleaning & Preprocessing
+The following preprocessing steps were applied:
+- Missing values handled using:
+  - Mean imputation for numerical features
+  - Most frequent value imputation for categorical features
+- Categorical variables encoded using One-Hot Encoding
+- Numerical features scaled using StandardScaler
+- Target leakage was avoided by applying preprocessing only within pipelines
 
 ---
 
 ## 🔍 Exploratory Data Analysis (EDA)
-Key insights from EDA:
-- The dataset is **imbalanced**, with ~77% non-claim buildings and ~23% claim buildings.
-- Older buildings tend to have a higher probability of insurance claims.
-- Certain categorical features show higher claim rates.
-- Outliers were observed in some numerical features.
+EDA was conducted to understand feature distributions and their relationship with insurance claims:
+- Target distribution analysis revealed class imbalance
+- Numerical features showed skewness, motivating feature scaling
+- Categorical features were analyzed using frequency counts
+- Claim rates were compared across categorical feature levels
 
-Visualizations include:
-- Feature distributions (histograms & boxplots)
-- Categorical value counts
-- Feature vs target analysis
+Key insights from EDA informed preprocessing and modeling choices.
 
 ---
 
-## 🛠 Data Preprocessing
-- Missing numerical values filled using **median**
-- Missing categorical values filled using **mode**
-- Categorical variables encoded using **One-Hot Encoding**
-- Numerical features scaled using **StandardScaler**
-- Class imbalance handled using **class weights**
+## 🤖 Modeling Approach
+Two machine learning models were implemented and compared:
 
----
+### 1. Logistic Regression (Baseline Model)
+- Used as an interpretable baseline
+- Class imbalance handled using `class_weight='balanced'`
 
-## 🤖 Models Implemented
-The  models were trained and evaluated using:
-- Logistic Regression (baseline)
+### 2. Random Forest Classifier
+- Captures non-linear relationships between features
+- Robust to outliers and feature interactions
+- Class imbalance handled using balanced class weights
 
+All models were implemented using Scikit-learn pipelines for reproducibility and to prevent data leakage.
 
 ---
 
 ## 📈 Model Evaluation
-Evaluation metrics used:
+Models were evaluated using the following metrics:
+- ROC-AUC
 - Precision
+- Recall
+- F1-score
 
+The Random Forest model achieved the best overall performance, particularly in identifying buildings at higher risk of insurance claims.
 
-The logistic regression  model was selected based on the type of dataset I worked with which is a binary dataset  
 ---
 
-## 🚀 How to Run the Project
-1. Clone the repository:
-   ```bash
-   git clone <your-repo-link>
+## ✅ Conclusion
+After comparing multiple models and preprocessing strategies, Random Forest was selected as the final model due to its superior predictive performance and robustness.
 
-Thank You
+---
+
+## 🛠️ Tools & Libraries
+- Python
+- Pandas, NumPy
+- Matplotlib, Seaborn
+- Scikit-learn
+
+---
+
+## 📂 Project Structure
+
+
+---
+
+## 👤 Author
+**Joy Samson**

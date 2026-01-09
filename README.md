@@ -67,3 +67,5 @@ The logistic regression  model was selected based on the type of dataset I worke
 1. Clone the repository:
    ```bash
    git clone <your-repo-link>
+
+Thank You
